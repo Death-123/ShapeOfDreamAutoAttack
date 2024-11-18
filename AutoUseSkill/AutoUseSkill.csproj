@@ -1,0 +1,93 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+        <AssemblyName>AutoUseSkill</AssemblyName>
+        <PluginGuid>me.Death.Plugin.ShapeOfDream.AutoUseSkill</PluginGuid>
+        <Product>Auto Use Skill</Product>
+        <Version>1.0.0</Version>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>latest</LangVersion>
+        <RestoreAdditionalProjectSources>
+            https://api.nuget.org/v3/index.json;
+            https://nuget.bepinex.dev/v3/index.json;
+            https://nuget.samboy.dev/v3/index.json
+        </RestoreAdditionalProjectSources>
+        <RootNamespace>AutoUseSkill</RootNamespace>
+        <OutputPath1>D:\Steam\steamapps\common\Shape of Dreams Prologue\BepInEx\plugins\AutoUseSkill</OutputPath1>
+    </PropertyGroup>
+
+    <Target Name="CopyOutputFiles" AfterTargets="Build">
+        <ItemGroup>
+            <OutputFiles Include="$(OutputPath)$(TargetFileName)"/>
+        </ItemGroup>
+        <Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(OutputPath1)"/>
+    </Target>
+
+    <ItemGroup>
+        <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="0Harmony">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\BepInEx\core\0Harmony.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="Assembly-CSharp">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\Shape of Dreams_Data\Managed\Assembly-CSharp.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="BepInEx.Core">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\BepInEx\core\BepInEx.Core.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="BepInEx.Preloader.Core">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\BepInEx\core\BepInEx.Preloader.Core.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="BepInEx.Unity.Common">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\BepInEx\core\BepInEx.Unity.Common.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="BepInEx.Unity.Mono">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\BepInEx\core\BepInEx.Unity.Mono.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="BepInEx.Unity.Mono.Preloader">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\BepInEx\core\BepInEx.Unity.Mono.Preloader.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="Dew.Contents">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\Shape of Dreams_Data\Managed\Dew.Contents.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="Dew.Core">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\Shape of Dreams_Data\Managed\Dew.Core.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="Mirror">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\Shape of Dreams_Data\Managed\Mirror.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="UnityEngine">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\Shape of Dreams_Data\Managed\UnityEngine.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="UnityEngine.CoreModule">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\Shape of Dreams_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="UnityEngine.IMGUIModule">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\Shape of Dreams_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="UnityEngine.UI">
+        <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\Shape of Dreams_Data\Managed\UnityEngine.UI.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+    </ItemGroup>
+</Project>
