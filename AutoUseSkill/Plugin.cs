@@ -54,7 +54,7 @@ public class AutoUseSkill : BaseUnityPlugin
 
     private void TryAutoCastSkill()
     {
-        for (var i = 0; i < 3; i++)
+        for (var i = 0; i <= 3; i++)
         {
             if (!AutoUseDict[i]) continue;
             Player.Ability.abilities.TryGetValue(i, out var abilityTrigger);

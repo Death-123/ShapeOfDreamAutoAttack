@@ -5,7 +5,7 @@
         <AssemblyName>AutoUseSkill</AssemblyName>
         <PluginGuid>me.Death.Plugin.ShapeOfDream.AutoUseSkill</PluginGuid>
         <Product>Auto Use Skill</Product>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>latest</LangVersion>
         <RestoreAdditionalProjectSources>
