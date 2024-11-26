@@ -5,9 +5,9 @@
         <AssemblyName>AutoUseSkill</AssemblyName>
         <PluginGuid>me.Death.Plugin.ShapeOfDream.AutoUseSkill</PluginGuid>
         <Product>Auto Use Skill</Product>
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <LangVersion>latest</LangVersion>
+        <LangVersion>default</LangVersion>
         <RestoreAdditionalProjectSources>
             https://api.nuget.org/v3/index.json;
             https://nuget.bepinex.dev/v3/index.json;
@@ -23,14 +23,6 @@
         </ItemGroup>
         <Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(OutputPath1)"/>
     </Target>
-
-    <ItemGroup>
-        <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*"/>
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
-        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all"/>
-    </ItemGroup>
 
     <ItemGroup>
       <Reference Include="0Harmony">
@@ -89,5 +81,15 @@
         <HintPath>..\..\..\..\Steam\steamapps\common\Shape of Dreams Prologue\Shape of Dreams_Data\Managed\UnityEngine.UI.dll</HintPath>
         <Private>False</Private>
       </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="BepInEx.NET.Common" Version="6.0.0-be.725" />
+      <PackageReference Include="BepInEx.PluginInfoProps" Version="2.1.0" />
+      <PackageReference Include="BepInEx.Unity.Common" Version="6.0.0-be.725" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ReferencePathWithRefAssemblies Update="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll" />
     </ItemGroup>
 </Project>

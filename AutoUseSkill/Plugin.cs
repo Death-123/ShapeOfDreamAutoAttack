@@ -32,8 +32,8 @@ public class AutoUseSkill : BaseUnityPlugin
     {
         Logger = base.Logger;
         Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
-        EnableKey = Config.Bind("Keys", "EnableKey", new KeyboardShortcut(KeyCode.O, Array.Empty<KeyCode>()), "启用\nEnable");
-        OpenMenuKey = Config.Bind("Keys", "OpenMenuKey", new KeyboardShortcut(KeyCode.I, Array.Empty<KeyCode>()), "打开菜单\nOpen menu");
+        EnableKey = Config.Bind("Keys", "EnableKey", new KeyboardShortcut(KeyCode.O), "启用\nEnable");
+        OpenMenuKey = Config.Bind("Keys", "OpenMenuKey", new KeyboardShortcut(KeyCode.I), "打开菜单\nOpen menu");
         ButtonHeight = Config.Bind("GUI", "ButtonHeight", 0.035f, "按钮高度, 屏幕高度的比例\nButton height, ratio of screen height");
         SearchInterval = Config.Bind("SearchInterval", "SearchInterval", 0.01d, "技能释放检测间隔, 单位为秒\nSkill cast detection interval, in seconds");
         WindowRect = new Rect(Screen.width * 0.4f, Screen.height * 0.4f, Screen.width * 0.25f, Screen.height * ButtonHeight.Value * 4f);
@@ -65,8 +65,13 @@ public class AutoUseSkill : BaseUnityPlugin
             {
                 case CastMethodType.Cone:
                 case CastMethodType.Arrow:
-                case CastMethodType.Target:
                     if (!controlManager.targetEnemy || !skill.currentConfig.CheckRange(Player, controlManager.targetEnemy)) shouldCast = false;
+                    break;
+                case CastMethodType.Target:
+                    if ((skill.currentConfig.targetValidator.targets & EntityRelation.Self) == 0)
+                    {
+                        if (!controlManager.targetEnemy || !skill.currentConfig.CheckRange(Player, controlManager.targetEnemy)) shouldCast = false;
+                    }
                     break;
                 case CastMethodType.None:
                 case CastMethodType.Point:
